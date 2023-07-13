@@ -4,6 +4,7 @@ from .models import Item
 from .serializer import ItemSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+import requests
 # Create your views here.
 class getItem(APIView):
     # queryset=Item.objects.all()
@@ -12,6 +13,9 @@ class getItem(APIView):
         # result = Item.objects.all()
         # serializer=ItemSerializer(result,many=True)
         return Response({'status': 'success'}, status=200)
+    def home(request):
+        response=requests.get('http://localhost:8000/api/getData').json()
+        return render(request,)
 # class getItem(APIView):
 #     # queryset=Item.objects.all()
 #     # serializer_class=ItemSerializer
